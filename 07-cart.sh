@@ -61,8 +61,10 @@ validate $? "Unzipping cart"
 npm install &>> $logs_file
 validate $? "Installing dependencies"
 
-sed -i "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/cart.service"
-cp "$scripts_dir/cart.service" /etc/systemd/system/cart.service
+#sed -i "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/cart.service"
+#cp "$scripts_dir/cart.service" /etc/systemd/system/cart.service
+
+sed "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/cart.service" > /etc/systemd/system/cart.service
 
 systemctl daemon-reload &>> $logs_file
 systemctl enable cart &>> $logs_file
