@@ -44,5 +44,3 @@ validate $? "Enable and start Redis"
 
 echo "$(timestamp) [INFO] Script completed in $SECONDS seconds"
 echo "$(timestamp) [INFO] ==== Script completed Execution =====" | tee -a $logs_file
-
-#date formate : date +"%F %T"
