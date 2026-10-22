@@ -61,9 +61,13 @@ validate $? "Unzipping user"
 npm install &>> $logs_file
 validate $? "Installing dependencies"
 
+Environment=REDIS_URL="redis://redis.DOMAIN_NAME:6379"
+Environment=MONGO_URL="mongodb://mongodb.DOMAIN_NAME:27017/users"
+
 #sed -i "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service"
 #cp "$scripts_dir/user.service" /etc/systemd/system/user.service
-sed "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service" > /etc/systemd/system/user.service
+
+#sed "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service" > /etc/systemd/system/user.service
 
 systemctl daemon-reload &>> $logs_file
 systemctl enable user &>> $logs_file
