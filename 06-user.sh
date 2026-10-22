@@ -61,8 +61,9 @@ validate $? "Unzipping user"
 npm install &>> $logs_file
 validate $? "Installing dependencies"
 
-sed -i "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service"
-cp "$scripts_dir/user.service" /etc/systemd/system/user.service
+#sed -i "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service"
+#cp "$scripts_dir/user.service" /etc/systemd/system/user.service
+sed "s/DOMAIN_NAME/$domain_name/g" "$scripts_dir/user.service" > /etc/systemd/system/user.service
 
 systemctl daemon-reload &>> $logs_file
 systemctl enable user &>> $logs_file
